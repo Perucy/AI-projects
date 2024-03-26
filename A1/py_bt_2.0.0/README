@@ -1,0 +1,61 @@
+CS 131 A1
+BEHAVIOR TREE
+Written By: Perucy Mussiba
+Date: 09th February 2024
+
+Purpose: The program contains implementation of a behavior tree that controls the functioning of the
+        vacuum cleaning robot roaming.
+
+        The program is divided into conditions, tasks and composites.
+        Conditions:
+        Battery < 30: This condition succeeds when the battery level is less than 30 and fails otherwise
+        Spot cleaning: This condition succeeds upon user's command to clean a spot of their choice. Incase the user
+                       doesn't initiate the command, then the condition fails
+        General cleaning: This condition succeeds upon user's command to vacuum a room. Incase the user
+                       doesn't initiate the command, then the condition fails
+        Dusty spot sensor: This condition depends on the evaluation of a random bool variable. If the variable evaluates
+                            to true then the condition succeeds, when false it fails
+
+        Tasks:
+        Find home, Go Home and Dock: These tasks occur when "Battery level < 30" condition succeeds. They return
+                                    success only with no failed or running results because in this implementation
+                                    obstacles that would affect battery recharging are ignored.
+        Clean spot: This task succeeds when the timer decorator executes to 0 secs. It also returns running when
+                    the timer is still running. The task cannot fail because the timer can either succeed or run and
+                    thus the task does the same.
+        Done Spot: Resets the SPOT_CLEANING variable to its default value (False). It succeeds when SPOT_CLEANING is
+                    false indicating that the spot is cleaned and the user hasn't initiated a spot cleaning command.
+                    It returns failed when SPOT_CLEANING is true, meaning the spot cleaning isn't taking place.
+        Always Fail: The task returns success when the DUSTY_SPOT_SENSOR evaluates true when the robot detects a
+                     dusty spot for vacuuming. It returns failed when the sensor value is false hence no dusty spot
+                     vacuuming wasn't done. It cannot return running because it deals with either the sensor was
+                     stimulated or not making it a success or failure task.
+        Done General: Resets the GENERAL_CLEANING variable to its default value (False). It succeeds when
+                    GENERAL_CLEANING is false indicating that the room is vacuumed and the user hasn't initiated a
+                    general cleaning command. It returns failed when SPOT_CLEANING is true, meaning the spot cleaning
+                    isn't taking place.
+        Do Nothing: The task returns success for an idle robot (neither charging nor cleaning). It returns failure
+                    when the robot is cleaning or charging. It cannot return running because the robot is idle hence
+                    it is not doing anything.
+
+        Composites:
+        Selection: This composite returns failed when all its nodes or children return failed. It immediately
+                    returns succeed or running when a node or child returns these results.
+        Sequence: It evaluates to failed when its node or child returns failed. The composite also returns succeed
+                   when all nodes or children succeed and running when when a child or node returns success
+        Priority: This composite returns failed when all its nodes or children return failed. It immediately
+                  returns succeed or running when a node or child returns these results.
+        The composites' children or nodes are evaluated from left to right.
+
+        Assumptions:
+        - External factors with exception of user commands and dusty spot sensor simulation when sensing dust such
+        as electricity source accessibility for charging are ignored for seamless implementation of the program
+        - Incase the robot's battery level decreases to below 30 as it conducts spot or general cleaning, then the
+        robot will make its way to charging and then resume on its assigned task
+        - Further general cleaning after dusty spot vacuuming is through a random number generation with high
+        probability of further cleaning to take place
+        - One cycle of the main loop corresponds to 1s of timer implementation
+
+Acknowledgement: CS 131 Behavior trees notes and python documentation on classes and inheritance implementation
+
+

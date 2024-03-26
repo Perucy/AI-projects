@@ -1,0 +1,20 @@
+CS 131 A2
+Written by: Perucy Mussiba
+Date: 24th February 2024
+
+Purpose: search.py contains an implementation of informed search algorithms namely A* and Uniform Cost Search
+        The user lists the pancakes as numbers spaced from one another to represent a pancakes stack of maximum
+        size 10. The user then specifies the algorithm of choice and then the stack and the choice is passed into the
+        particular function for execution.
+        Upon completion the algorithm returns the sorted pancake stack and prints the sequence at which the initial
+        state of the pancakes should be flipped as indices starting from 0.
+
+Assumptions:
+    - The heuristic function is defined as a gap heuristic measuring the number of gaps (the difference between
+    consecutive pancakes greater than 1). This value is executed every time new pancake stacks are created after
+    flipping of the stacks. The value is then defined as the forward cost.
+    - The backward cost is defined as the number of flips done to reach a state from the initial state.
+    - In A* search algorithm the forward and backward costs are added for each state. The total cost determines the
+    priority of each state in the priority queue
+    - In Uniform Cost Search algorithm only the backward cost for each state is considered to determine the priority
+    of each state in the priority queue
