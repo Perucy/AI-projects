@@ -1,0 +1,38 @@
+CS 131 A3
+Written by: Perucy Mussiba
+Date: 12th March 2024
+
+Purpose: genetic_search_algorithm.py contains an implementation of local search.
+        The implementation applies the genetic algorithm that involves initialising
+        a random population of individuals, determining the fitness of these
+        individuals, reproducing new individuals through mutation and cross-over and
+        finally determining the best individual as a solution to the search
+        problem.
+        In this project, a bag is packed with boxes of different weights and 
+        importance value. The goal is to determine what boxes should be packed
+        to maximize the importance value without exceeding the given weight limit.
+        Hence, the genetic algorithm is handy in generating random choices 
+        of boxes to find the right boxes to maximize the bag's value.
+
+Assumptions:
+    - Individuals are represented as a list of binary numbers 0 and 1 which are the genes
+    and the individuals are the chromosomes
+    - The binary numbers or genes are randomly generated into a list of length
+    12 same as the number of boxes and then added to a population list
+    - For each individual or chromosome, 1 represents a chosen box and 0 the 
+    opposite
+    - The fitness of each individual is determined by summing up their importance
+    value and an individual is returned as long as the total weight of 250 is
+    not exceeded
+    - The selection of parents uses proportion selection to randomly select
+    individuals as parents for the next generation
+    - The genes to be mutated or crossed-over are randomly selected for the respective process
+    - At 50% or 0.5 the population is culled after the new generation (children)
+    are created. Culling is done to eliminate individuals with very small importance values
+    - The size of the population is assumed to be 100
+    - The number of generations for which the algorithm runs is 100
+    - The rate that determines an individuals chances of mutation is 50% or 0.5.
+    For each individual a random value is generated for which if it is less than 0.5
+    then the individual is selected for mutation
+    - In this algorithm the target importance value is 40 and above. Any value below
+    this is considered a good enough solution in case the best solution is not obtained
