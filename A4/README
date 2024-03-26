@@ -1,0 +1,25 @@
+CS 131 A4 Constraint Satisfaction Problem
+Written by: Perucy Mussiba
+Date: 20th March 2024
+Purpose: This file explains the assumptions and algorithm used in solving the Sudoku puzzle
+            as a constraint satisfaction problem
+
+Files: Sudoku_csp.py
+Purpose: The file above implements solving a constraint satisfaction problem using backtracking algorithm
+        to solve a Sudoku puzzle.
+        In this problem, the algorithm works by looping through the pre-existing numbers in the cells of a
+        row and column and checking if the number to be entered in an empty the cell already exists in the
+        corresponding row and column. If it does exist then another number is used and the same process
+        repeats. The number to be filled in the cell is obtained sequentially from 1 to 9 using a for loop.
+        Hence, before filling a number in an empty cell the algorithm backtracks to check if the number is already
+        used.
+Assumptions:
+        - The puzzle is a 9 X 9 with nine 3 X 3 regions for which a number has to appear once in a row, column and
+        a region
+        - The puzzle is represented as a 2D-array of 9 columns and rows indexed from 0 to 8
+        - Instead of returning a solution, a boolean value of true is returned when the puzzle is solved and
+        false otherwise
+        - When true is returned then the solved Sudoku puzzle is printed, for false a statement is printed
+        explaining that the puzzle could not be solved
+        - Recursion is used to ensure the validity of the numbers in the puzzle and solving of the puzzle
+        - The algorithm will always yield a solution
