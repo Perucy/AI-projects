@@ -1,0 +1,38 @@
+CS 131 A5
+Written by: Perucy Mussiba
+Date: 21/04/2024
+Purpose: README for naive_bayesian.py
+
+
+Files: naive_bayesian.py
+Purpose: The file contains a program that implements a recursive naive bayesian algorithm to classify tracks recorded
+        by a radar as either a bird or an airplane
+        The program first reads test, bird and plane track data from dataset.txt and testing.txt and adds them to a
+        numpy array. The NaN values are replaced by the mean of the non-NaN values in a row.
+        The bird and plane tracks arrays are used to obtain the variance values for which the bird track is
+        expected to have a high value compared to a plane since birds have a widely varying velocity compared to
+        planes that travel in a constant velocity.
+        The test track variance is also obtained and used together with the mean and standard deviation values of bird
+        and plane track variances to determine the new likelihoods of birds and planes to be used as an additional
+        feature for classification
+        The new likelihoods are multiplied by the given likelihoods from likelihood.txt and for the bird and plane
+        likelihoods the maximum value is obtained and returned as the likelihood values
+
+        Track classification uses a recursive bayesian algorithm that applies the bayes formula. The posterior
+        probabilities of bird and plane are initially determined from the given prior probabilities and later
+        updated using the transitional probabilities and previous posterior probabilities.
+        The evidence value is determined from the likelihood and posterior probability values.
+        The classification depends on the higher value between the posterior probability of a bird and that of a plane
+        for which 'b' is added to a list and 'a' otherwise.
+        The final classification values are returned where 'b' represents a bird and 'a' an airplane
+
+Assumptions:
+    - Variance is the new classification feature
+    - Variance values of birds is higher than that of airplanes
+    - Birds have a varying velocity while planes have a constant velocity
+    - Transition probabilities are 0.9 for bird to bird and plane to plane
+    - Prior probability values are 0.5 for bird and planes which is continuously updated
+    - The NaN values are replaced by the mean of the non-NaN values in a track.
+
+Bugs:
+    - My program has bugs that cause the final classification to match 9/10 values to the expected classification

@@ -1,0 +1,37 @@
+CS 131 A6 - ANN IRIS SPECIES CLASSIFICATION
+Author: Perucy Mussiba
+Date: May 1st 2024
+Purpose: README for ann.py
+
+
+Files: ann.py
+Purpose: ann.py implements artificial neural networks algorithm to classify iris plants species.
+        The program begins by processing the data from the ANN - Iris data.txt file whereby the attributes and
+        classes are extracted followed by hot encoding of the classes' labels. The processed data is then split into
+        training and test sets, then the training and validation sets for training purposes.
+
+        The neural network is implemented to have 1 input layer composed of 4 neurons, 2 hidden layers containing 5 and
+        10 neurons respectively and lastly an output layer with 3 neurons. Thorough testing was done starting with 2
+        hidden layers of 3 neurons each and the number of neurons was varied until the number of neurons that results
+        to a 90% and above accuracy is obtained.
+
+        The algorithm randomly initializes weights in a range [-1, 1] and a bias of 1 for each neuron. The weights
+        and biases are organized in a 2D array to depict their position between layers. The program uses the sigmoid
+        function as the activation function during forward propagation and keeps track of activation values of each
+        neuron and layer for future use in backward propagation.
+
+        The backward propagation determines the error and gradients of weights and biases to update the weights and
+        biases during the learning process. After learning is done in an approximate 500 iterations the accuracy
+        of the training and validation sets is printed. 500 was chosen because at the suitable learning rate of
+        0.1, iterations above 500 the model over fits and then under fits.
+
+        The program simulates user query to allow user input of features of the specie they intend to classify. The
+        program then prints the predicted specie name after training and validation is done.
+
+Assumptions:
+    - Learning rate = 0.1
+    - Activation function = sigmoid function
+    - Number of iterations (epochs) = 500
+    - Bias = 1
+
+Acknowledgement: ANN class notes and programming websites on training of artificial neural networks (GeeksforGeeks)
