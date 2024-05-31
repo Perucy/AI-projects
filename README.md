@@ -14,4 +14,8 @@ Overview:
     - Genetic algorithms
     
     - Constraint Satisfaction problems
+
+    - Naive Bayes Classification
+
+    - Artificial Neural Network
     
